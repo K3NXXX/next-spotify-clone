@@ -1,23 +1,25 @@
 import { ISignUp } from '@/@types/auth.types'
 import { PAGES } from '@/constants/pages.constants'
 import { SignUpNextStepBtn } from '@/ui/SignUpNextStepBtn/SignUpNextStepBtn'
+import { SocialButtons } from '@/ui/SocialButtons/SocialButtons'
 import { TextField } from '@mui/material'
-import Image from 'next/image'
 import Link from 'next/link'
 import { FieldErrors, UseFormRegister } from 'react-hook-form'
 import styles from './EmailStep.module.scss'
-import { SocialButtons } from '@/ui/SocialButtons/SocialButtons'
-
 
 interface IEmailStepProps {
 	register: UseFormRegister<ISignUp>
 	errors: FieldErrors<ISignUp>
 	handleChangeStep: () => void
+	emailError: boolean
+	handleEmailChange: () => void
 }
 export function EmailStep({
 	register,
 	errors,
 	handleChangeStep,
+	handleEmailChange,
+	emailError,
 }: IEmailStepProps) {
 	return (
 		<div className={styles.step0}>
@@ -40,10 +42,14 @@ export function EmailStep({
 							value: 100,
 							message: 'Email must contain max 100 letters',
 						},
+						onChange: handleEmailChange,
 					})}
 					error={!!errors.email}
 					helperText={errors.email?.message}
 				/>
+				{emailError && (
+					<p className={styles.emailError}>This email is already in use</p>
+				)}
 			</div>
 			<SignUpNextStepBtn handleChangeStep={handleChangeStep} />
 			<div className={styles.orWrapper}>
@@ -51,7 +57,7 @@ export function EmailStep({
 				<span>or</span>
 				<div></div>
 			</div>
-			<SocialButtons/>
+			<SocialButtons />
 			<p className={styles.logIn}>
 				Already have an account? <Link href={PAGES.LOGIN}>Log in</Link>
 			</p>

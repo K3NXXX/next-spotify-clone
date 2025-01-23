@@ -2,7 +2,7 @@ export interface ISignUp {
 	name: string
 	email: string
 	password: string
-	confirmPassword: string
+	passwordConfirm: string
 }
 
 export interface ILogin {
@@ -11,5 +11,5 @@ export interface ILogin {
 }
 
 export interface IEmailCode {
-	code: string
+	token: string
 }

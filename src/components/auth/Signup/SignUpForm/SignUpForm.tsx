@@ -23,13 +23,15 @@ export function SignUpForm() {
 
 	const { push } = useRouter()
 	const [signupStep, setSignupStep] = useState(0)
+	const [emailError, setEmailError] = useState(false)
 	const progress = (signupStep / 3) * 100
 
 	const handleChangeStep = async () => {
+		if (emailError) return
 		const fields: Array<keyof ISignUp> = [
 			'email',
 			'password',
-			'confirmPassword',
+			'passwordConfirm',
 		]
 		const isValid = await trigger(fields[signupStep])
 
@@ -38,11 +40,21 @@ export function SignUpForm() {
 		}
 	}
 
+	const handleEmailChange = () => {
+		if (emailError) setEmailError(false)
+	}
+
 	const { mutate } = useMutation({
 		mutationKey: ['signup'],
 		mutationFn: (signupData: ISignUp) => authService.signup(signupData),
 		onSuccess: () => {
 			push(PAGES.EMAIL_VERIFY)
+		},
+		onError: (error: any) => {
+			if (error.status === 409) {
+				setSignupStep(0)
+				setEmailError(true)
+			}
 		},
 	})
 
@@ -54,6 +66,8 @@ export function SignUpForm() {
 			<form className={styles.root} onSubmit={handleSubmit(onSubmit)}>
 				{signupStep === 0 && (
 					<EmailStep
+						emailError={emailError}
+						handleEmailChange={handleEmailChange}
 						handleChangeStep={handleChangeStep}
 						register={register}
 						errors={errors}

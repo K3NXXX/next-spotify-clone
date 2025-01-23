@@ -24,12 +24,20 @@
 		font-size: 16px;
 		font-weight: 500;
 	}
+
 	.input {
 		margin-top: 8px;
 		border-radius: 4px;
 		width: 100%;
-	
 	}
+
+	.emailError {
+		color: #f3727f;
+		font-size: 14px;
+		margin-top: 6px;
+		margin-left: 15px;
+	}
+
 	:global {
 		& .MuiInputBase-input {
 			color: white;

@@ -1,4 +1,4 @@
-import { ISignUp } from '@/@types/auth.types'
+import { IEmailCode, ILogin, ISignUp } from '@/@types/auth.types'
 import axios from 'axios'
 
 class AuthService {
@@ -21,17 +21,18 @@ class AuthService {
 		)
 		return data
 	}
-	// async login(loginData: ILoginData) {
-	// 	const { data } = await axios.post(`${this.BASE_URL}/auth/login`, loginData)
-	// 	return data
-	// }
-	// async emailVerification(token: IConfirmCode) {
-	// 	const { data } = await axios.post(
-	// 		`${this.BASE_URL}/auth/confirmation`,
-	// 		token
-	// 	)
-	// 	return data
-	// }
+
+	async login(loginData: ILogin) {
+		const { data } = await axios.post(`${this.BASE_URL}/auth/login`, loginData)
+		return data
+	}
+
+	async emailVerification(token: IEmailCode) {
+		const { data } = await axios.post(
+			`${this.BASE_URL}/auth/confirmation`, token
+		)
+		return data
+	}
 }
 
 export const authService = new AuthService()

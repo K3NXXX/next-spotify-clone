@@ -70,8 +70,8 @@ export function PasswordStep({
 							},
 							validate: {
 								hasCharacter: value =>
-									/[a-zA-Zа-яА-Я]/.test(value) ||
-									'Password must contain at least one letter',
+									/[a-zA-Z]/.test(value) ||
+									'Password must contain at least one latin letter',
 								hasDigitOrSpecialChar: value =>
 									/[0-9!@#$%^&*]/.test(value) ||
 									'Password must contain at least one digit or special character (e.g., #$%^&)',
@@ -83,7 +83,7 @@ export function PasswordStep({
 				<p className={styles.mustContain}>Password must contain: </p>
 				<div className={styles.passwordValid}>
 					<div>
-						{watch('password')?.match(/[a-zA-Zа-яА-Я]/) ? (
+						{watch('password')?.match(/[a-zA-Z]/) ? (
 							<MdCheckCircle size={14} color='#1abc54' />
 						) : (
 							<GoCircle color='grey' size={14} />

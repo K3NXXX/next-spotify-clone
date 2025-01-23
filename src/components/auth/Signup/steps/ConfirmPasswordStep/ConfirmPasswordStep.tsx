@@ -61,12 +61,12 @@ export function ConfirmPasswordStep({
 						id='confirmPassword'
 						variant='outlined'
 						type={showPassword ? 'text' : 'password'}
-						{...register('confirmPassword', {
+						{...register('passwordConfirm', {
 							validate: value =>
 								value === watch('password') || 'Passwords do not match',
 						})}
-						error={!!errors.confirmPassword}
-						helperText={errors.confirmPassword?.message}
+						error={!!errors.passwordConfirm}
+						helperText={errors.passwordConfirm?.message}
 					/>
 				</div>
 

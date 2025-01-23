@@ -33,7 +33,7 @@
 			display: flex;
 			flex-direction: column;
 			position: relative;
-			width: 80%; 
+			width: 80%;
 			label {
 				@media (max-width: 560px) {
 					margin-left: 0px;
@@ -41,6 +41,13 @@
 				color: white;
 				font-size: 16px;
 				font-weight: 500;
+			}
+			.codeError {
+				color: #f3727f;
+				font-size: 14px;
+				margin-top: 6px;
+				margin-left: 15px;
+				text-align: start;
 			}
 			.input {
 				margin-top: 8px;
