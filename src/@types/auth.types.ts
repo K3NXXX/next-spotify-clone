@@ -5,6 +5,11 @@ export interface ISignUp {
 	confirmPassword: string
 }
 
+export interface ILogin {
+	email: string
+	password: string
+}
+
 export interface IEmailCode {
 	code: string
 }

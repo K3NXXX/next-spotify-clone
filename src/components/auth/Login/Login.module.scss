@@ -1,0 +1,124 @@
+.root {
+	background: linear-gradient(rgba(255, 255, 255, 0.1) 0%, rgb(0, 0, 0) 100%);
+	min-height: 100%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	@media (max-width: 800px) {
+		background: #121212;
+	}
+	.wrapper {
+		padding: 30px;
+		max-width: 734px;
+		margin: 0 auto;
+		padding-top: 70px;
+		background-color: #121212;
+		border-radius: 8px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 100%;
+		h1 {
+			font-weight: 700;
+			color: white;
+			font-size: 40px;
+			margin-bottom: 40px;
+			max-width: 400px;
+			width: 100%;
+			text-align: center;
+			line-height: 50px;
+			@media (max-width: 600px) {
+				font-size: 30px;
+			}
+			@media (max-width: 450px) {
+				font-size: 24px;
+				margin-bottom: 20px;
+			}
+		}
+		.form {
+			max-width: 333px;
+			width: 100%;
+			margin-top: 30px;
+			display: flex;
+			flex-direction: column;
+			gap: 15px 0;
+			.inputWrapper {
+				display: flex;
+				flex-direction: column;
+				position: relative;
+				label {
+					color: white;
+					font-size: 16px;
+					font-weight: 500;
+				}
+				.input {
+					margin-top: 8px;
+					border-radius: 4px;
+					width: 100%;
+				}
+				.eyeIcon {
+					color: white;
+					width: 25px;
+					height: 25px;
+					position: absolute;
+					right: 20px;
+					top: 38px;
+					cursor: pointer;
+					z-index: 3;
+				}
+				:global {
+					& .MuiInputBase-input {
+						color: white;
+						font-size: 15px;
+					}
+					& .MuiOutlinedInput-root {
+						& .MuiOutlinedInput-notchedOutline {
+							border-color: gray;
+						}
+
+						&:hover .MuiOutlinedInput-notchedOutline {
+							border-color: rgb(255, 255, 255);
+						}
+
+						&.Mui-focused .MuiOutlinedInput-notchedOutline {
+							border-color: rgb(255, 255, 255);
+						}
+						&.Mui-error .MuiOutlinedInput-notchedOutline {
+							border-color: #c23f4c;
+						}
+					}
+
+					.MuiFormHelperText-root {
+						color: #f3727f;
+						font-size: 14px;
+						margin-top: 4px;
+					}
+				}
+			}
+			button {
+				color: black;
+				font-weight: 700;
+				background-color: #1abc54;
+				padding: 12px 32px;
+				border-radius: 50px;
+				width: 100%;
+				font-size: 16px;
+				margin-top: 20px;
+				transition: 0.3s ease;
+				margin-bottom: 40px;
+				&:hover {
+					opacity: 0.7;
+				}
+			}
+		}
+		.signup {
+			text-align: center;
+			color: gray;
+			a {
+				color: white;
+				text-decoration: underline;
+			}
+		}
+	}
+}

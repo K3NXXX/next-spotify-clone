@@ -1,13 +1,13 @@
 import { ISignUp } from '@/@types/auth.types'
+import { PAGES } from '@/constants/pages.constants'
 import { SignUpNextStepBtn } from '@/ui/SignUpNextStepBtn/SignUpNextStepBtn'
 import { TextField } from '@mui/material'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FieldErrors, UseFormRegister } from 'react-hook-form'
 import styles from './EmailStep.module.scss'
-import appleIcon from '/public/signup/appleIcon.svg'
-import facebookIcon from '/public/signup/facebookIcon.svg'
-import googleIcon from '/public/signup/googleIcon.svg'
+import { SocialButtons } from '@/ui/SocialButtons/SocialButtons'
+
 
 interface IEmailStepProps {
 	register: UseFormRegister<ISignUp>
@@ -24,6 +24,7 @@ export function EmailStep({
 			<h1 className={styles.title}>Sign up to begin listening</h1>
 			<div className={styles.inputWrapper}>
 				<label>Email address</label>
+
 				<TextField
 					className={styles.input}
 					id='email'
@@ -50,30 +51,9 @@ export function EmailStep({
 				<span>or</span>
 				<div></div>
 			</div>
-			<div className={styles.socialButtons}>
-				<button type='button'>
-					<Image
-						className={styles.googleIcon}
-						src={googleIcon}
-						alt='google icon'
-					/>
-					<p>Continue with Google</p>
-				</button>
-				<button type='button'>
-					<Image
-						className={styles.icon}
-						src={facebookIcon}
-						alt='facebook icon'
-					/>
-					<p>Continue with Facebook</p>
-				</button>
-				<button type='button'>
-					<Image className={styles.icon} src={appleIcon} alt='apple icon' />
-					<p>Continue with Apple</p>
-				</button>
-			</div>
+			<SocialButtons/>
 			<p className={styles.logIn}>
-				Already have an account? <Link href='#'>Log in</Link>
+				Already have an account? <Link href={PAGES.LOGIN}>Log in</Link>
 			</p>
 		</div>
 	)
