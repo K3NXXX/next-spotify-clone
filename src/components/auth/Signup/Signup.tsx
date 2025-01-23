@@ -1,6 +1,6 @@
 import { FaSpotify } from 'react-icons/fa'
-import styles from './Signup.module.scss'
 import { SignUpForm } from './SignUpForm/SignUpForm'
+import styles from './Signup.module.scss'
 
 export function Signup() {
 	return (
