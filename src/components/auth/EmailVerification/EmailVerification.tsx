@@ -22,7 +22,7 @@ export function EmailVerification() {
 				<h3>Email Verification</h3>
 				<p>
 					We have sent a code to your email. Please check your inbox to verify
-					your registration. If you haven't received our email please check your
+					your registration. If you haven&apos;t received our email please check your
 					spam folder.
 				</p>
 				<div className={styles.inputWrapper}>

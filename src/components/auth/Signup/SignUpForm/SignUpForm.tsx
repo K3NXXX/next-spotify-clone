@@ -81,7 +81,6 @@ export function SignUpForm() {
 				)}
 				{signupStep === 3 && (
 					<NameStep
-						handleChangeStep={handleChangeStep}
 						register={register}
 						errors={errors}
 						progress={progress}

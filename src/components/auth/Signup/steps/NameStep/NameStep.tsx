@@ -7,7 +7,6 @@ import styles from './NameStep.module.scss'
 interface INameStepProps {
 	register: UseFormRegister<ISignUp>
 	errors: FieldErrors<ISignUp>
-	handleChangeStep: () => void
 	progress: number
 	setSignupStep: React.Dispatch<React.SetStateAction<number>>
 	watch: UseFormWatch<ISignUp>
@@ -17,7 +16,6 @@ export function NameStep({
 	errors,
 	progress,
 	setSignupStep,
-	handleChangeStep,
 }: INameStepProps) {
 	return (
 		<div className={styles.step3}>
