@@ -1,6 +1,8 @@
 import { ISignUp } from '@/@types/auth.types'
+import { Loading } from '@/ui/Loading/Loading'
 import { LinearProgress, TextField } from '@mui/material'
-import { FieldErrors, UseFormRegister, UseFormWatch } from 'react-hook-form'
+import { UseMutationResult } from '@tanstack/react-query'
+import { FieldErrors, UseFormRegister } from 'react-hook-form'
 import { MdArrowBackIos } from 'react-icons/md'
 import styles from './NameStep.module.scss'
 
@@ -9,12 +11,13 @@ interface INameStepProps {
 	errors: FieldErrors<ISignUp>
 	progress: number
 	setSignupStep: React.Dispatch<React.SetStateAction<number>>
-	watch: UseFormWatch<ISignUp>
+	status: UseMutationResult['status']
 }
 export function NameStep({
 	register,
 	errors,
 	progress,
+	status,
 	setSignupStep,
 }: INameStepProps) {
 	return (
@@ -70,6 +73,8 @@ export function NameStep({
 				<button type='submit' className={styles.confirmButton}>
 					Create account
 				</button>
+				{status === 'pending' && <Loading />}
+				
 			</div>
 		</div>
 	)

@@ -53,13 +53,14 @@ export function EmailVerification() {
 						className={styles.input}
 						id='password'
 						variant='outlined'
+						placeholder='13gFfsd'
 						{...register('token', {
 							required: 'Code is required',
 						})}
 						error={!!errors.token}
 						helperText={errors.token?.message}
 					/>
-						{codeError && <p className={styles.codeError}>Invalid code</p>}
+					{codeError && <p className={styles.codeError}>Invalid code</p>}
 				</div>
 				<button className={styles.confirmBtn}>Confirm email</button>
 				{status === 'pending' && <Loading />}

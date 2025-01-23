@@ -44,7 +44,7 @@ export function SignUpForm() {
 		if (emailError) setEmailError(false)
 	}
 
-	const { mutate } = useMutation({
+	const { mutate, status } = useMutation({
 		mutationKey: ['signup'],
 		mutationFn: (signupData: ISignUp) => authService.signup(signupData),
 		onSuccess: () => {
@@ -99,7 +99,7 @@ export function SignUpForm() {
 						errors={errors}
 						progress={progress}
 						setSignupStep={setSignupStep}
-						watch={watch}
+						status={status}
 					/>
 				)}
 			</form>
