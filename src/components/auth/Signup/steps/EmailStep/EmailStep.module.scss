@@ -27,9 +27,7 @@
 		margin-top: 8px;
 		border-radius: 4px;
 		width: 100%;
-		@media (max-width: 440px) {
-			width: 300px;
-		}
+	
 	}
 	:global {
 		& .MuiInputBase-input {
@@ -108,10 +106,7 @@
 		gap: 0 20px;
 		width: 100%;
 		transition: 0.3s ease;
-		@media (max-width: 440px) {
-			width: 300px;
-			padding: 14px 40px;
-		}
+		
 		&:hover {
 			background-color: rgba(41, 41, 41, 0.3);
 		}
@@ -120,9 +115,7 @@
 			font-weight: 700;
 			font-size: 15px;
 			min-width: 246px;
-			@media (max-width: 440px) {
-				min-width: 190px;
-			}
+		
 		}
 	}
 	.icon {

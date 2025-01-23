@@ -1,5 +1,4 @@
 import { ISignUp } from '@/@types/auth.types'
-import { SignUpNextStepBtn } from '@/ui/SignUpNextStepBtn/SignUpNextStepBtn'
 import { LinearProgress, TextField } from '@mui/material'
 import { FieldErrors, UseFormRegister, UseFormWatch } from 'react-hook-form'
 import { MdArrowBackIos } from 'react-icons/md'
@@ -48,23 +47,23 @@ export function NameStep({
 						{...register('name', {
 							required: 'Name is required',
 							minLength: {
-							  value: 3,
-							  message: 'Name must contain at least 3 characters',
+								value: 3,
+								message: 'Name must contain at least 3 characters',
 							},
 							maxLength: {
-							  value: 50,
-							  message: 'Name must contain max 50 characters',
+								value: 50,
+								message: 'Name must contain max 50 characters',
 							},
 							pattern: {
-							  value: /^[a-zA-Zа-яА-Я0-9]+$/,
-							  message: 'Name cannot contain special characters',
+								value: /^[a-zA-Zа-яА-Я0-9]+$/,
+								message: 'Name cannot contain special characters',
 							},
 							validate: {
-							  hasThreeEnglishLetters: value =>
-								(value.match(/[a-zA-Z]/g)?.length || 0) >= 3 ||
-								'Name must contain at least 3 letters',
+								hasThreeEnglishLetters: value =>
+									(value.match(/[a-zA-Z]/g)?.length || 0) >= 3 ||
+									'Name must contain at least 3 letters',
 							},
-						  })}
+						})}
 						error={!!errors.name}
 						helperText={errors.name?.message}
 					/>

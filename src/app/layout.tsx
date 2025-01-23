@@ -1,5 +1,6 @@
+import ClientProviders from '@/components/provider/ClientProvider'
+import '@/styles/globals.scss'
 import { Poppins } from 'next/font/google'
-import "@/styles/globals.scss"
 
 const poppins = Poppins({
 	subsets: ['latin'],
@@ -14,7 +15,9 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang='en'>
-			<body className={poppins.variable}>{children}</body>
+			<body className={poppins.variable}>
+				<ClientProviders>{children}</ClientProviders>
+			</body>
 		</html>
 	)
 }

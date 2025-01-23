@@ -1,5 +1,9 @@
 'use client'
 import { ISignUp } from '@/@types/auth.types'
+import { PAGES } from '@/constants/pages.constants'
+import { authService } from '@/services/auth.service'
+import { useMutation } from '@tanstack/react-query'
+import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { ConfirmPasswordStep } from '../steps/ConfirmPasswordStep/ConfirmPasswordStep'
@@ -17,6 +21,7 @@ export function SignUpForm() {
 		formState: { errors },
 	} = useForm<ISignUp>({ mode: 'onChange' })
 
+	const { push } = useRouter()
 	const [signupStep, setSignupStep] = useState(0)
 	const progress = (signupStep / 3) * 100
 
@@ -33,17 +38,16 @@ export function SignUpForm() {
 		}
 	}
 
-	// const {mutate} = useMutation({
-	// 	mutationKey: ['signup'],
-	// 	mutationFn: (signupData: ISignUp) => authService.signup(signupData),
-	// 	onSuccess: () => {
-
-	// 	}
-	// })
+	const { mutate } = useMutation({
+		mutationKey: ['signup'],
+		mutationFn: (signupData: ISignUp) => authService.signup(signupData),
+		onSuccess: () => {
+			push(PAGES.EMAIL_VERIFY)
+		},
+	})
 
 	const onSubmit: SubmitHandler<ISignUp> = signupData => {
-		// mutate(signupData)
-		console.log(signupData)
+		mutate(signupData)
 	}
 	return (
 		<>

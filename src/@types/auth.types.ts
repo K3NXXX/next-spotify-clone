@@ -4,3 +4,7 @@ export interface ISignUp {
 	password: string
 	confirmPassword: string
 }
+
+export interface IEmailCode {
+	code: string
+}
