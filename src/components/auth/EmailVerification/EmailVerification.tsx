@@ -1,11 +1,9 @@
 'use client'
+
 import { IEmailCode } from '@/@types/auth.types'
-import { PAGES } from '@/constants/pages.constants'
-import { authService } from '@/services/auth.service'
+import { useEmailConfirmMutation } from '@/hooks/auth/useEmailConfirmMutation'
 import { Loading } from '@/ui/Loading/Loading'
 import { TextField } from '@mui/material'
-import { useMutation } from '@tanstack/react-query'
-import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { MdOutlineEmail } from 'react-icons/md'
@@ -18,20 +16,8 @@ export function EmailVerification() {
 		formState: { errors },
 	} = useForm<IEmailCode>({ mode: 'onChange' })
 
-	const { replace } = useRouter()
 	const [codeError, setCodeError] = useState(false)
-
-	const { mutate, status } = useMutation({
-		mutationKey: ['emailConfirm'],
-		mutationFn: (data: IEmailCode) => authService.emailVerification(data),
-		onSuccess: () => {
-			window.history.replaceState(null, '', '/')
-			replace(PAGES.HOME)
-		},
-		onError: (error: any) => {
-			if (error.status === 404) setCodeError(true)
-		},
-	})
+	const { mutate, status } = useEmailConfirmMutation(setCodeError)
 
 	const onSubmit: SubmitHandler<IEmailCode> = data => {
 		mutate(data)

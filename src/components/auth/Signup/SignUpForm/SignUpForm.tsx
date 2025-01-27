@@ -1,9 +1,6 @@
 'use client'
 import { ISignUp } from '@/@types/auth.types'
-import { PAGES } from '@/constants/pages.constants'
-import { authService } from '@/services/auth.service'
-import { useMutation } from '@tanstack/react-query'
-import { useRouter } from 'next/navigation'
+import { useSignupMutations } from '@/hooks/auth/useSignupMutation'
 import { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { ConfirmPasswordStep } from '../steps/ConfirmPasswordStep/ConfirmPasswordStep'
@@ -21,10 +18,10 @@ export function SignUpForm() {
 		formState: { errors },
 	} = useForm<ISignUp>({ mode: 'onChange' })
 
-	const { push } = useRouter()
 	const [signupStep, setSignupStep] = useState(0)
 	const [emailError, setEmailError] = useState(false)
 	const progress = (signupStep / 3) * 100
+	const { mutate, status } = useSignupMutations(setSignupStep, setEmailError)
 
 	const handleChangeStep = async () => {
 		if (emailError) return
@@ -43,20 +40,6 @@ export function SignUpForm() {
 	const handleEmailChange = () => {
 		if (emailError) setEmailError(false)
 	}
-
-	const { mutate, status } = useMutation({
-		mutationKey: ['signup'],
-		mutationFn: (signupData: ISignUp) => authService.signup(signupData),
-		onSuccess: () => {
-			push(PAGES.EMAIL_VERIFY)
-		},
-		onError: (error: any) => {
-			if (error.status === 409) {
-				setSignupStep(0)
-				setEmailError(true)
-			}
-		},
-	})
 
 	const onSubmit: SubmitHandler<ISignUp> = signupData => {
 		mutate(signupData)

@@ -2,44 +2,23 @@
 
 import { ILogin } from '@/@types/auth.types'
 import { PAGES } from '@/constants/pages.constants'
-import { authService } from '@/services/auth.service'
+import { useLoginMutation } from '@/hooks/auth/useLoginMutation'
 import { Loading } from '@/ui/Loading/Loading'
 import { Logo } from '@/ui/Logo/Logo'
 import { SocialButtons } from '@/ui/SocialButtons/SocialButtons'
 import { TextField } from '@mui/material'
-import { useMutation } from '@tanstack/react-query'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { BsEye, BsEyeSlash } from 'react-icons/bs'
 import styles from './Login.module.scss'
 
 export function Login() {
-	const {
-		handleSubmit,
-		register,
-		formState: { errors },
-	} = useForm<ILogin>({ mode: 'onChange' })
+	const { handleSubmit, register } = useForm<ILogin>({ mode: 'onChange' })
 
 	const [showPassword, setShowPassword] = useState(false)
 	const [loginError, setLoginError] = useState(false)
-	const { replace } = useRouter()
-
-	const { mutate, status } = useMutation({
-		mutationKey: ['login'],
-		mutationFn: (data: ILogin) => authService.login(data),
-		onSuccess: () => {
-			window.history.replaceState(null, '', '/')
-			replace(PAGES.HOME)
-		},
-		onError: (error:any) => {
-			console.log(error)
-			if (error.status === 400) {
-				setLoginError(true)
-			}
-		}
-	})
+	const { mutate, status } = useLoginMutation(setLoginError)
 
 	const onSubmit: SubmitHandler<ILogin> = data => {
 		mutate(data)
@@ -87,7 +66,9 @@ export function Login() {
 							})}
 							type={showPassword ? 'text' : 'password'}
 						/>
-						{loginError && <p className={styles.loginError}>Incorrect email or password</p>}
+						{loginError && (
+							<p className={styles.loginError}>Incorrect email or password</p>
+						)}
 					</div>
 					<button>Log in</button>
 					{status === 'pending' && <Loading />}

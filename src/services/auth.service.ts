@@ -1,36 +1,24 @@
 import { IEmailCode, ILogin, ISignUp } from '@/@types/auth.types'
-import axios from 'axios'
+import { axiosClassic } from '@/axios/interceptors'
 
 class AuthService {
-	private BASE_URL = 'https://spotify-server-api-28ab9bd01e44.herokuapp.com'
-
-	async saveAccessToken(accessToken: string) {
-		try {
-			const token = localStorage.setItem('accessToken', accessToken)
-			return token
-		} catch (error) {
-			console.error('Error retrieving access token:', error)
-			return null
-		}
-	}
-
 	async signup(signupData: ISignUp) {
-		const { data } = await axios.post(
-			`${this.BASE_URL}/auth/signup`,
-			signupData
-		)
+		const { data } = await axiosClassic.post(`/auth/signup`, signupData)
 		return data
 	}
 
 	async login(loginData: ILogin) {
-		const { data } = await axios.post(`${this.BASE_URL}/auth/login`, loginData)
+		const { data } = await axiosClassic.post(`/auth/login`, loginData)
 		return data
 	}
 
 	async emailVerification(token: IEmailCode) {
-		const { data } = await axios.post(
-			`${this.BASE_URL}/auth/confirmation`, token
-		)
+		const { data } = await axiosClassic.post(`/auth/confirmation`, token)
+		return data
+	}
+
+	async logout() {
+		const { data } = await axiosClassic.post(`/auth/logout`)
 		return data
 	}
 }
