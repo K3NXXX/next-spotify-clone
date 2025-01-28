@@ -1,0 +1,22 @@
+.root {
+	position: fixed;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	display: none;
+	@media (max-width:1000px) {
+		display: block;
+	}
+	.menu {
+		background-color: transparent;
+		.label {
+			color: white;
+		}
+		.icon {
+			color: white;
+			width: 20px;
+			height: 20px;
+			margin-bottom: 3px;
+		}
+	  } 
+}

@@ -1,4 +1,8 @@
-import { Header } from '@/components/main/Header/Header'
+'use client'
+import { BottomNavigationMenu } from '@/components/main/BottomNavigationMenu/BottomNavigationMenu'
+import { HeaderDesktop } from '@/components/main/header/HeaderDesktop/HeaderDesktop'
+import { HeaderMobile } from '@/components/main/header/HeaderMobile/HeaderMobile'
+import styles from './mainLayout.module.scss'
 
 export default function MainLayout({
 	children,
@@ -6,9 +10,16 @@ export default function MainLayout({
 	children: React.ReactNode
 }>) {
 	return (
-		<div style={{padding: "0 15px", backgroundColor: "black"}}>
-			<Header/>
+		<div
+			className={styles.root}
+		
+		>
+			<div>
+				<HeaderMobile />
+				<HeaderDesktop />
+			</div>
 			{children}
+			<BottomNavigationMenu />
 		</div>
 	)
 }

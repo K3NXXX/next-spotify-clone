@@ -9,15 +9,15 @@ import { FaSpotify } from 'react-icons/fa'
 import { GoHome, GoHomeFill } from 'react-icons/go'
 import { IoBrowsersOutline } from 'react-icons/io5'
 import { RiCloseLargeFill, RiSearchLine } from 'react-icons/ri'
-import styles from './Header.module.scss'
+import styles from './HeaderDesktop.module.scss'
 
-export function Header() {
+export function HeaderDesktop() {
 	const currentPath = usePathname()
 	const userData = JSON.parse(localStorage.getItem('userData') ?? '')
 	const [searchValue, setSearchValue] = useState('')
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
 	const open = Boolean(anchorEl)
-	const { mutate } = useLogoutMutation()
+	const { mutate: logout } = useLogoutMutation()
 	const handleClick = (event: React.MouseEvent<HTMLParagraphElement>) => {
 		setAnchorEl(event.currentTarget)
 	}
@@ -85,7 +85,7 @@ export function Header() {
 					Account
 				</MenuItem>
 				<MenuItem
-					onClick={() => mutate()}
+					onClick={() => logout()}
 					sx={{
 						color: 'white',
 						fontSize: '14px',
