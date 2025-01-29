@@ -4,12 +4,11 @@
 	align-items: center;
 	padding: 20px 0;
 	display: none;
-	@media (max-width:1000px) {
+	@media (max-width: 1000px) {
 		display: flex;
 	}
 	.icons {
 		display: flex;
 		gap: 0 20px;
 	}
-	
 }

@@ -1,4 +1,11 @@
 .root {
 	padding: 0 15px;
 	background-color: black;
+	min-height: 100%;
+
+	main {
+		display: flex;
+		gap: 0 15px;
+		
+	}
 }

@@ -1,0 +1,86 @@
+.root {
+	background-color: #121212;
+	padding: 15px 10px;
+	min-height: 714px;
+	border-radius: 10px;
+	.top {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		.library {
+			display: flex;
+			gap: 0 10px;
+			align-items: center;
+			transition: 0.3s ease;
+			cursor: pointer;
+			p,
+			.icon {
+				transition: color 0.3s ease;
+			}
+			&:hover {
+				p,
+				.icon {
+					color: white;
+				}
+			}
+			p {
+				color: #b3b3b3;
+				font-size: 16px;
+				font-weight: 700;
+			}
+			.icon {
+				color: #b3b3b3;
+				width: 24px;
+				height: 24px;
+				margin-bottom: 3px;
+				cursor: pointer;
+			}
+		}
+		.create {
+			display: flex;
+			align-items: center;
+			gap: 0 15px;
+			.icon {
+				color: #b3b3b3;
+				width: 23px;
+				height: 23px;
+				cursor: pointer;
+				transition: 0.3s ease;
+				&:hover {
+					color: white;
+				}
+			}
+		}
+	}
+	.content {
+		.empty {
+			background-color: #1f1f1f;
+			padding: 16px 20px;
+			margin-top: 30px;
+			border-radius: 10px;
+			h4 {
+				color: white;
+				font-size: 16px;
+				font-weight: 700;
+				margin-bottom: 10px;
+			}
+			p {
+				font-weight: 400;
+				margin-bottom: 20px;
+			}
+			button {
+				color: black;
+				background-color: white;
+				padding: 6px 16px;
+				font-weight: 700;
+				border-radius: 20px;
+				transition: 0.3s ease;
+				&:hover {
+					opacity: 0.5;
+				}
+			}
+		
+		}
+	}
+}

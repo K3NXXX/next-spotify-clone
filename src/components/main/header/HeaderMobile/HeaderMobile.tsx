@@ -1,9 +1,9 @@
+import { PAGES } from '@/constants/pages.constants'
+import Link from 'next/link'
 import { FaSpotify } from 'react-icons/fa'
 import { FiSettings } from 'react-icons/fi'
 import { PiClockCountdownBold } from 'react-icons/pi'
 import styles from './HeaderMobile.module.scss'
-import Link from 'next/link'
-import { PAGES } from '@/constants/pages.constants'
 
 export function HeaderMobile() {
 	return (

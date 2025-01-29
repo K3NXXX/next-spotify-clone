@@ -1,12 +1,13 @@
 'use client'
 import { PAGES } from '@/constants/pages.constants'
 import { useLogoutMutation } from '@/hooks/auth/useLogoutMutation'
-import { Menu, MenuItem } from '@mui/material'
+import CustomTooltip from '@/ui/CustomTooltip/CustomTooltip'
+import { IconButton, Menu, MenuItem } from '@mui/material'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import { FaSpotify } from 'react-icons/fa'
-import { GoHome, GoHomeFill } from 'react-icons/go'
+import { GoHome } from 'react-icons/go'
 import { IoBrowsersOutline } from 'react-icons/io5'
 import { RiCloseLargeFill, RiSearchLine } from 'react-icons/ri'
 import styles from './HeaderDesktop.module.scss'
@@ -32,9 +33,17 @@ export function HeaderDesktop() {
 			<div className={styles.search}>
 				<div className={styles.iconWrapper}>
 					{currentPath === PAGES.HOME ? (
-						<GoHomeFill className={styles.homeIcon} />
+						<CustomTooltip title='Home'>
+							<IconButton>
+								<GoHome className={styles.homeIcon} />
+							</IconButton>
+						</CustomTooltip>
 					) : (
-						<GoHome className={styles.homeIcon} />
+						<CustomTooltip title='Home'>
+							<IconButton>
+								<GoHome className={styles.homeIcon} />
+							</IconButton>
+						</CustomTooltip>
 					)}
 				</div>
 				<div className={styles.inputWrapper}>
@@ -45,7 +54,13 @@ export function HeaderDesktop() {
 							className={styles.iconClose}
 						/>
 					) : (
-						<IoBrowsersOutline className={styles.browseIcon} />
+						<div className={styles.positionWrapper}>
+							<CustomTooltip title='Browse'>
+								<IconButton>
+									<IoBrowsersOutline className={styles.browseIcon} />
+								</IconButton>
+							</CustomTooltip>
+						</div>
 					)}
 
 					<input
