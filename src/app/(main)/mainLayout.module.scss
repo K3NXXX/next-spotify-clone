@@ -3,9 +3,37 @@
 	background-color: black;
 	min-height: 100%;
 
-	main {
+	.main {
 		display: flex;
-		gap: 0 15px;
-		
+		flex-direction: row;
 	}
+
+	.panelGroup {
+		display: flex;
+	}
+
+	.resizeHandle {
+		position: relative; 
+		background-color: transparent;
+		cursor: pointer;
+		width: 1px; 
+		opacity: 0; 
+		transition: opacity 0.3s ease; 
+		padding: 0 10px; 
+		&:hover {
+		  opacity: 1; 
+		}
+		
+		&::before {
+		  content: '';
+		  position: absolute;
+		  top: 0;
+		  bottom: 0;
+		  left: 50%;
+		  transform: translateX(-50%); 
+		  background-color: #ffffff;
+		  width: 1px;
+		}
+	  }
+	  
 }

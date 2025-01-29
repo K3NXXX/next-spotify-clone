@@ -1,5 +1,6 @@
 'use client'
 
+import { AudioPlayerDesktop } from '@/components/main/AudioPlayerDesktop/AudioPlayerDesktop'
 import { BottomNavigationMenu } from '@/components/main/BottomNavigationMenu/BottomNavigationMenu'
 import { HeaderDesktop } from '@/components/main/header/HeaderDesktop/HeaderDesktop'
 import { HeaderMobile } from '@/components/main/header/HeaderMobile/HeaderMobile'
@@ -25,7 +26,7 @@ export default function MainLayout({
 				<HeaderDesktop />
 			</div>
 			<main className={styles.main}>
-				<PanelGroup direction='horizontal'>
+				<PanelGroup direction='horizontal' className={styles.panelGroup}>
 					<Panel ref={panelRef} defaultSize={20} minSize={15} maxSize={50}>
 						<PlaylistsDesktop panelRef={panelRef} />
 					</Panel>
@@ -35,6 +36,8 @@ export default function MainLayout({
 					</Panel>
 				</PanelGroup>
 			</main>
+
+			<AudioPlayerDesktop />
 			<BottomNavigationMenu />
 		</div>
 	)

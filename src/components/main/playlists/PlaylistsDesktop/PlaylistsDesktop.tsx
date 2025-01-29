@@ -26,7 +26,6 @@ export function PlaylistsDesktop({ panelRef }: IPlaylistsDesktopProps) {
 			resizeObserver.observe(panelWrapperRef.current)
 		}
 
-		// Очистка після знищення компонента
 		return () => {
 			if (panelWrapperRef.current) {
 				resizeObserver.unobserve(panelWrapperRef.current)
