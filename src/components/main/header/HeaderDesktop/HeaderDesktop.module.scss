@@ -1,6 +1,6 @@
 .root {
-	display: flex;
-	justify-content: space-between;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
 	align-items: center;
 	padding: 8px 15px;
 	@media (max-width: 1000px) {
@@ -10,6 +10,7 @@
 		display: flex;
 		align-items: center;
 		gap: 0 10px;
+		justify-self: center;
 		.inputWrapper {
 			position: relative;
 
@@ -26,7 +27,7 @@
 				top: 2px;
 				right: 7px;
 			}
-			
+
 			.browseIcon {
 				width: 40px;
 				height: 27px;
@@ -91,6 +92,10 @@
 		}
 	}
 	.name {
+		justify-self: end;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		color: black;
 		background-color: #ff6437;
 		border-radius: 50%;
@@ -98,6 +103,7 @@
 		font-weight: 700;
 		border: 10px solid #1f1f1f;
 		cursor: pointer;
+		width: 55px;
+		height: 55px;
 	}
-	
 }

@@ -18,16 +18,18 @@ const StyledTooltip = styled(({ className, ...props }: any) => (
 
 interface CustomTooltipProps {
 	title: string
+	position: string
 	children: React.ReactNode
 }
 
-const CustomTooltip: React.FC<CustomTooltipProps> = ({ title, children }) => {
+const CustomTooltip: React.FC<CustomTooltipProps> = ({ title, position, children }) => {
 	const [open, setOpen] = useState(false)
 
 	return (
 		<StyledTooltip
 			title={title}
 			open={open}
+			placement={position}
 			onOpen={() => setOpen(true)}
 			onClose={() => setOpen(false)}
 		>

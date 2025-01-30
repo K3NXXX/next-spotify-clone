@@ -35,6 +35,10 @@
 				height: 24px;
 				margin-bottom: 3px;
 				cursor: pointer;
+				transition: 0.3s ease;
+				&:hover {
+					color: white;
+				}
 			}
 		}
 		.create {
@@ -80,7 +84,21 @@
 					opacity: 0.5;
 				}
 			}
-		
 		}
+	}
+}
+.item {
+	display: flex;
+	align-items: center;
+	gap: 0 10px;
+	.icon {
+		color: #b3b3b3;
+		width: 20px;
+		height: 20px;
+	}
+	p {
+		color: #ffffff;
+		font-weight: 700;
+		font-size: 15px;
 	}
 }

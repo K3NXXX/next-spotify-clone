@@ -4,8 +4,9 @@ import { AudioPlayerDesktop } from '@/components/main/AudioPlayerDesktop/AudioPl
 import { BottomNavigationMenu } from '@/components/main/BottomNavigationMenu/BottomNavigationMenu'
 import { HeaderDesktop } from '@/components/main/header/HeaderDesktop/HeaderDesktop'
 import { HeaderMobile } from '@/components/main/header/HeaderMobile/HeaderMobile'
+import { CollapsedPlaylist } from '@/components/main/playlists/CollapsedPlaylist/CollapsedPlaylist'
 import { PlaylistsDesktop } from '@/components/main/playlists/PlaylistsDesktop/PlaylistsDesktop'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import {
 	type ImperativePanelHandle,
 	Panel,
@@ -18,6 +19,7 @@ export default function MainLayout({
 	children,
 }: Readonly<{ children: React.ReactNode }>) {
 	const panelRef = useRef<ImperativePanelHandle | null>(null)
+	const [isCollapsed, setIsCollapsed] = useState(false)
 
 	return (
 		<div className={styles.root}>
@@ -27,8 +29,21 @@ export default function MainLayout({
 			</div>
 			<main className={styles.main}>
 				<PanelGroup direction='horizontal' className={styles.panelGroup}>
-					<Panel ref={panelRef} defaultSize={20} minSize={15} maxSize={50}>
-						<PlaylistsDesktop panelRef={panelRef} />
+					<Panel
+						onCollapse={() => setIsCollapsed(true)}
+						collapsible={true}
+						onExpand={() =>  setIsCollapsed(false)}
+						collapsedSize={4}
+						ref={panelRef}
+						defaultSize={20}
+						minSize={15}
+						maxSize={50}
+					>
+						{isCollapsed ? (
+							<CollapsedPlaylist  panelRef={panelRef} />
+						) : (
+							<PlaylistsDesktop panelRef={panelRef} />
+						)}
 					</Panel>
 					<PanelResizeHandle className={styles.resizeHandle} />
 					<Panel order={2} minSize={20} defaultSize={80}>

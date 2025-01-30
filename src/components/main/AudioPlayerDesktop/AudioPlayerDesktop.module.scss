@@ -4,7 +4,7 @@
 	right: 0;
 	left: 0	;
 	display: flex;
-	padding: 20px 0;
+	padding: 20px 40px;
 	justify-content: space-between;
 	.center {
 		width: 722px;
@@ -39,8 +39,24 @@
 			.time {
 				color: #b3b3b3;
 				font-size: 12px;
+				user-select: none;
 			}
 		}
+	}
+	.right {
+		display: flex;
+		align-items: center;
+		gap: 0 5px;
+		.volumeIcon {
+			width: 20px;
+			height: 20px;
+			color: #b3b3b3;
+			cursor: pointer;
+			&:hover {
+				color: white;
+			}
+		}
+		
 	}
 	
 }

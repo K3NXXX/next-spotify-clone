@@ -1,0 +1,39 @@
+.root {
+	background-color: #121212;
+	padding: 15px 10px;
+	min-height: 780px;
+	border-radius: 10px;
+	.content {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		gap: 20px 0;
+		.playlists {
+			display: flex;
+			align-items: center;
+			flex-direction: column;
+			gap: 20px 0;
+			.wrapper {
+				cursor: pointer;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				background-color: #282828;
+				padding: 9px 12px;
+				border-radius: 5px;
+			}
+			
+		}
+	}
+}
+.icon {
+	color: #b3b3b3;
+	width: 28px;
+	height: 28px;
+	margin-bottom: 3px;
+	cursor: pointer;
+	transition: 0.3s ease;
+	&:hover {
+		color: white;
+	}
+}

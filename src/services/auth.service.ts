@@ -21,6 +21,16 @@ class AuthService {
 		const { data } = await axiosClassic.post(`/auth/logout`)
 		return data
 	}
+
+	async googleAuth() {
+		const { data } = await axiosClassic.get(`/auth/google`)
+		return data
+	}
+
+	async facebookAuth() {
+		const { data } = await axiosClassic.get(`/auth/facebook`)
+		return data
+	}
 }
 
 export const authService = new AuthService()

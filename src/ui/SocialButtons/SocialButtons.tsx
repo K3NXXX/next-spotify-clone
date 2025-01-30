@@ -1,3 +1,5 @@
+import { authService } from '@/services/auth.service'
+import { useQuery } from '@tanstack/react-query'
 import Image from 'next/image'
 import styles from './SocialButtons.module.scss'
 import appleIcon from '/public/signup/appleIcon.svg'
@@ -5,6 +7,10 @@ import facebookIcon from '/public/signup/facebookIcon.svg'
 import googleIcon from '/public/signup/googleIcon.svg'
 
 export function SocialButtons() {
+	const { data } = useQuery({
+		queryKey: ['googleAuth'],
+		queryFn: () => authService.googleAuth(),
+	})
 	return (
 		<div className={styles.socialButtons}>
 			<button type='button'>

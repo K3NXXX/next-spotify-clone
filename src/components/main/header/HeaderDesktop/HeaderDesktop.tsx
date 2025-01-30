@@ -33,13 +33,13 @@ export function HeaderDesktop() {
 			<div className={styles.search}>
 				<div className={styles.iconWrapper}>
 					{currentPath === PAGES.HOME ? (
-						<CustomTooltip title='Home'>
+						<CustomTooltip position='bottom'  title='Home'>
 							<IconButton>
 								<GoHome className={styles.homeIcon} />
 							</IconButton>
 						</CustomTooltip>
 					) : (
-						<CustomTooltip title='Home'>
+						<CustomTooltip position='bottom'  title='Home'>
 							<IconButton>
 								<GoHome className={styles.homeIcon} />
 							</IconButton>
@@ -55,7 +55,7 @@ export function HeaderDesktop() {
 						/>
 					) : (
 						<div className={styles.positionWrapper}>
-							<CustomTooltip title='Browse'>
+							<CustomTooltip position='bottom' title='Browse'>
 								<IconButton>
 									<IoBrowsersOutline className={styles.browseIcon} />
 								</IconButton>
