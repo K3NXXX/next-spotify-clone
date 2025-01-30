@@ -2,7 +2,7 @@
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	align-items: center;
-	padding: 8px 15px;
+	padding: 8px 22px;
 	@media (max-width: 1000px) {
 		display: none;
 	}

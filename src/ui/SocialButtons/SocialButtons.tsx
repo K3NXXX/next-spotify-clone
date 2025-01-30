@@ -1,19 +1,27 @@
 import { authService } from '@/services/auth.service'
-import { useQuery } from '@tanstack/react-query'
+import { useMutation, useQuery } from '@tanstack/react-query'
 import Image from 'next/image'
 import styles from './SocialButtons.module.scss'
 import appleIcon from '/public/signup/appleIcon.svg'
 import facebookIcon from '/public/signup/facebookIcon.svg'
 import googleIcon from '/public/signup/googleIcon.svg'
+import { useRouter } from 'next/navigation'
 
 export function SocialButtons() {
-	const { data } = useQuery({
-		queryKey: ['googleAuth'],
-		queryFn: () => authService.googleAuth(),
+	const {push} = useRouter()
+	const {mutate :googleAuth} = useMutation({
+		mutationKey: ['googleAuth'],
+		mutationFn: () => authService.googleAuth()
 	})
+
+	const handleGoogleAuth = () => {
+		googleAuth()
+		push('auth/google')
+	}
+
 	return (
 		<div className={styles.socialButtons}>
-			<button type='button'>
+			<button onClick={handleGoogleAuth} type='button'>
 				<Image
 					className={styles.googleIcon}
 					src={googleIcon}
